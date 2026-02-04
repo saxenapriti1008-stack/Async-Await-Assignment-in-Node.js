@@ -47,3 +47,26 @@ const fetchAdvice = async () => {
 
 fetchAdvice();
 
+//Part 3: Combining Promises + Fetch with Async/Await
+
+const getAdviceAfterCoinFlip = async () => {
+  try {
+    const result = await flipCoin();
+    console.log(result);
+
+    const response = await fetch("https://api.adviceslip.com/advice");
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch advice");
+    }
+
+    const data = await response.json();
+    console.log("Advice:", data.slip.advice);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getAdviceAfterCoinFlip();
+
+
