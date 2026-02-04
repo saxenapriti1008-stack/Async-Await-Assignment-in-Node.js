@@ -27,3 +27,23 @@ const coinFlipResult = async () => {
 };
 
 coinFlipResult();
+
+//Part 2: Fetching Data from an API with Async/Await
+
+const fetchAdvice = async () => {
+  try {
+    const response = await fetch("https://api.adviceslip.com/advice");
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch advice");
+    }
+
+    const data = await response.json();
+    console.log("Advice:", data.slip.advice);
+  } catch (error) {
+    console.log("Error fetching advice:", error.message);
+  }
+};
+
+fetchAdvice();
+
